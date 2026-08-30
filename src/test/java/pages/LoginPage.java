@@ -25,7 +25,6 @@ public class LoginPage {
 
     public boolean isErrorVisible() {
         return driver.findElement(By.cssSelector("[data-test='error']")).isDisplayed();
-
     }
 
     public String getErrorText() {

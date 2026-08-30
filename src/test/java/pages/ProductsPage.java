@@ -9,11 +9,9 @@ public class ProductsPage {
     public ProductsPage(WebDriver driver) {
         this.driver = driver;
     }
-
     public boolean isPageTitleVisible() {
         return driver.findElement(pageTitle).isDisplayed();
     }
-
     public String getPageTitle(){
         return driver.findElement(pageTitle).getText();
     }
