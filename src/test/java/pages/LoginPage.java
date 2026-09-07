@@ -21,6 +21,7 @@ public class LoginPage extends BasePage {
         fillPasswordInput(password);
         driver.findElement(loginBtn).click();
     }
+
     public void fillLoginInput(String user) {
         driver.findElement(usernameInput).sendKeys(user);
     }
