@@ -1,13 +1,15 @@
 package tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import user.CheckoutData;
 import user.CheckoutDataFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static enums.TitleNaming.*;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 import static user.UserFactory.withAdminPermission;
 
 public class CheckoutTest extends BaseTest {
@@ -18,11 +20,10 @@ public class CheckoutTest extends BaseTest {
                 List.of("Sauce Labs Fleece Jacket",
                         "Sauce Labs Onesie",
                         "Test.allTheThings() T-Shirt (Red)");
-        System.out.println("checkGoodsInCart is running in thread: " + Thread.currentThread().threadId());
 
         loginPage.open();
         loginPage.login(withAdminPermission());
-        Assert.assertTrue(productsPage.isPageTitleVisible());
+        assertTrue(productsPage.isPageTitleVisible());
         assertEquals(productsPage.getPageTitle(), PRODUCTS.getDisplayName());
 
         for (String goodsName : goodsList) {
@@ -32,7 +33,18 @@ public class CheckoutTest extends BaseTest {
         cartPage.clickCheckout();
         assertEquals(productsPage.getPageTitle(), YOUR_INFORMATION.getDisplayName());
 
-        checkoutPage.fillCheckoutForm(CheckoutDataFactory.withValidData());
+        CheckoutData data = CheckoutDataFactory.withValidData();
+        checkoutPage.fillCheckoutForm(data);
+
+        ArrayList<String> formValues = checkoutPage.getFormValues();
+
+        assertTrue(
+                formValues.stream().noneMatch(String::isEmpty),
+                "Одно или несколько полей checkout пустые: " + formValues
+        );
+
+        checkoutPage.clickContinue();
+
         assertEquals(checkoutPage.getPageTitle(), CHECKOUT_OVERVIEW.getDisplayName());
     }
 }

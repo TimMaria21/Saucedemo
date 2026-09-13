@@ -18,7 +18,6 @@ public class CartTest extends BaseTest {
                 List.of("Sauce Labs Fleece Jacket",
                         "Sauce Labs Onesie",
                         "Test.allTheThings() T-Shirt (Red)");
-        System.out.println("checkGoodsInCart is running in thread: " + Thread.currentThread().threadId());
 
         loginPage.open();
         loginPage.login(withAdminPermission());

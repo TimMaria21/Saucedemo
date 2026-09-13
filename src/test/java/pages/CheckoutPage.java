@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import user.CheckoutData;
 
+import java.util.ArrayList;
+
 public class CheckoutPage extends BasePage {
     private final By firstNameInput = By.cssSelector(DATA_TEST_PATTERN.formatted("firstName"));
     private final By lastNameInput = By.cssSelector(DATA_TEST_PATTERN.formatted("lastName"));
@@ -21,7 +23,20 @@ public class CheckoutPage extends BasePage {
         driver.findElement(firstNameInput).sendKeys(data.getFirstName());
         driver.findElement(lastNameInput).sendKeys(data.getLastName());
         driver.findElement(postalCodeInput).sendKeys(data.getZip());
-        driver.findElement(continueBtn).click();
+    }
+
+    public void clickContinue(){
+        wait.until(ExpectedConditions.elementToBeClickable(continueBtn)).click();
+    }
+
+    public ArrayList<String> getFormValues() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameInput));
+
+        ArrayList<String> values = new ArrayList<>();
+        values.add(driver.findElement(firstNameInput).getAttribute("value"));
+        values.add(driver.findElement(lastNameInput).getAttribute("value"));
+        values.add(driver.findElement(postalCodeInput).getAttribute("value"));
+        return values;
     }
 
     public String getPageTitle() {
