@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import user.User;
 
 public class LoginPage extends BasePage {
     private final By usernameInput = By.cssSelector(DATA_TEST_PATTERN.formatted("username"));
@@ -16,9 +17,9 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL);
     }
 
-    public void login(String user, String password) {
-        fillLoginInput(user);
-        fillPasswordInput(password);
+    public void login(User user) {
+        fillLoginInput(user.getUser());
+        fillPasswordInput(user.getPassword());
         driver.findElement(loginBtn).click();
     }
 
@@ -29,7 +30,6 @@ public class LoginPage extends BasePage {
     public void fillPasswordInput(String password) {
         driver.findElement(passwordInput).sendKeys(password);
     }
-
 
     public boolean isErrorVisible() {
         return driver.findElement(By.cssSelector("[data-test='error']")).isDisplayed();
