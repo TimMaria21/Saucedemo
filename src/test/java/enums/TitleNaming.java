@@ -1,17 +1,14 @@
 package enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum TitleNaming {
     PRODUCTS("Products"),
     YOUR_INFORMATION("Checkout: Your Information"),
     CHECKOUT_OVERVIEW("Checkout: Overview");
-
-    TitleNaming(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
 
     private final String displayName;
 }

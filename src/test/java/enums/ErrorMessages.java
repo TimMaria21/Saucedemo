@@ -1,5 +1,10 @@
 package enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum ErrorMessages {
     LOCKED_USER("Epic sadface: Sorry, this user has been locked out."),
     EMPTY_USERNAME("Epic sadface: Username is required"),
@@ -7,12 +12,4 @@ public enum ErrorMessages {
     INVALID_CREDENTIALS("Epic sadface: Username and password do not match any user in this service");
 
     private final String message;
-
-    ErrorMessages(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }
