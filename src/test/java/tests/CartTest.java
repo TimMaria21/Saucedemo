@@ -12,13 +12,13 @@ import static user.UserFactory.withAdminPermission;
 
 @Epic("Saucedemo: Авторизация и покупки")
 @Feature("Работа с корзиной")
+@Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
 public class CartTest extends BaseTest {
     SoftAssert soft = new SoftAssert();
 
     @Story("Товары отображаются в корзине после добавления")
     @Severity(SeverityLevel.CRITICAL)
     @TmsLink("Saucedemo")
-    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
     @Description("Проверяем, что после добавления 3 товаров они все отображаются в корзине")
     @Test()
     public void checkGoodsInCart() {
