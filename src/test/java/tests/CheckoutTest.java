@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import user.CheckoutData;
 import user.CheckoutDataFactory;
@@ -12,10 +13,17 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static user.UserFactory.withAdminPermission;
 
+@Epic("SauceDemo: Авторизация и покупки")
+@Feature("Оформление заказа")
 public class CheckoutTest extends BaseTest {
 
+    @Story("Оформление заказа с валидными данными покупателя")
+    @Severity(SeverityLevel.BLOCKER)
+    @TmsLink("Saucedemo")
+    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
+    @Description("Проверяем, что при корректном оформлении заказа с валидными данными заказ успешно создаётся")
     @Test()
-            public void testCheckoutWithValidData(){
+    public void testCheckoutWithValidData() {
         List<String> goodsList =
                 List.of("Sauce Labs Fleece Jacket",
                         "Sauce Labs Onesie",
@@ -44,7 +52,6 @@ public class CheckoutTest extends BaseTest {
         );
 
         checkoutPage.clickContinue();
-
         assertEquals(checkoutPage.getPageTitle(), CHECKOUT_OVERVIEW.getDisplayName());
     }
 }

@@ -1,6 +1,7 @@
 package tests;
 
 import enums.ErrorMessages;
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import user.User;
@@ -11,6 +12,8 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 import static user.UserFactory.*;
 
+@Epic("Saucedemo: Авторизация и покупки")
+@Feature("Авторизация пользователя")
 public class LoginTest extends BaseTest {
     @DataProvider(name = "loginData")
     public Object[][] loginData() {
@@ -22,6 +25,11 @@ public class LoginTest extends BaseTest {
         };
     }
 
+    @Story("Вход с некорректными данными")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("Saucedemo")
+    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
+    @Description("Проверяем, что при неверных данных появляется корректное сообщение об ошибке")
     @Test(dataProvider = "loginData", priority = 1)
     public void incorrectDataLoginTest(User user, ErrorMessages errorMsg) {
         System.out.println("incorrectDataLoginTest is running in thread: " + Thread.currentThread().threadId());
@@ -36,7 +44,12 @@ public class LoginTest extends BaseTest {
         assertEquals(errorText, errorMsg.getMessage());
     }
 
-    @Test(description = "Проверка авторизации", priority = 2, invocationCount = 5)
+    @Story("Вход с корректными данными")
+    @Severity(SeverityLevel.BLOCKER)
+    @TmsLink("Saucedemo")
+    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
+    @Description("Проверяем, что при корректной авторизации попадаем на страницу товаров")
+    @Test(priority = 2, invocationCount = 1)
     public void correctUserTest() {
         System.out.println("correctUserTest is running in thread: " + Thread.currentThread().threadId());
 
