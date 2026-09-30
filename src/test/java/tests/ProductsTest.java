@@ -12,6 +12,7 @@ import static user.UserFactory.withAdminPermission;
 
 @Epic("SauceDemo: Авторизация и покупки")
 @Feature("Работа с товарами")
+@Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
 public class ProductsTest extends BaseTest {
     List<String> goodsList =
             List.of("Sauce Labs Fleece Jacket",
@@ -21,7 +22,6 @@ public class ProductsTest extends BaseTest {
     @Story("Добавление товаров в корзину")
     @Severity(SeverityLevel.CRITICAL)
     @TmsLink("Saucedemo")
-    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
     @Description("Проверяем, что после добавления 3 товаров по имени и 1 по индексу счётчик корзины показывает 4, а его цвет — красный")
     @Test()
     public void checkGoodsAdded() {

@@ -15,12 +15,12 @@ import static user.UserFactory.withAdminPermission;
 
 @Epic("SauceDemo: Авторизация и покупки")
 @Feature("Оформление заказа")
+@Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
 public class CheckoutTest extends BaseTest {
 
     @Story("Оформление заказа с валидными данными покупателя")
     @Severity(SeverityLevel.BLOCKER)
     @TmsLink("Saucedemo")
-    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
     @Description("Проверяем, что при корректном оформлении заказа с валидными данными заказ успешно создаётся")
     @Test()
     public void testCheckoutWithValidData() {

@@ -14,6 +14,7 @@ import static user.UserFactory.*;
 
 @Epic("Saucedemo: Авторизация и покупки")
 @Feature("Авторизация пользователя")
+@Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
 public class LoginTest extends BaseTest {
     @DataProvider(name = "loginData")
     public Object[][] loginData() {
@@ -28,7 +29,6 @@ public class LoginTest extends BaseTest {
     @Story("Вход с некорректными данными")
     @Severity(SeverityLevel.CRITICAL)
     @TmsLink("Saucedemo")
-    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
     @Description("Проверяем, что при неверных данных появляется корректное сообщение об ошибке")
     @Test(dataProvider = "loginData", priority = 1)
     public void incorrectDataLoginTest(User user, ErrorMessages errorMsg) {
@@ -47,7 +47,6 @@ public class LoginTest extends BaseTest {
     @Story("Вход с корректными данными")
     @Severity(SeverityLevel.BLOCKER)
     @TmsLink("Saucedemo")
-    @Owner("Mariya Timofeeva, mariya.timofeeva1@yandex.ru")
     @Description("Проверяем, что при корректной авторизации попадаем на страницу товаров")
     @Test(priority = 2, invocationCount = 1)
     public void correctUserTest() {
